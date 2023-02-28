@@ -41,6 +41,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define L5_BSPC LT(5, KC_BSPC)
 #define L6_DEL  LT(6, KC_DEL)
 
+// short names
+
+#define KC_KANA KC_INTERNATIONAL_2
+
+// layers
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     // base
