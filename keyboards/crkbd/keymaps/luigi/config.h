@@ -44,7 +44,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 /* home row mods */
-#define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_FORCE_HOLD
 
 #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
