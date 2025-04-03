@@ -41,6 +41,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define L5_BSPC LT(5, KC_BSPC)
 #define L6_DEL  LT(6, KC_DEL)
 
+// symbols modtap
+
+#define GUI_LSBR LGUI_T(KC_LBRC)
+#define ALT_LABR LALT_T(KC_LT)
+#define CTL_LCBR LCTL_T(KC_LCBR)
+#define SFT_LPAR SC_LSPO
+
+#define SFT_RPAR SC_RSPC
+#define CTL_RCBR RCTL_T(KC_RCBR)
+#define ALT_RABR RALT_T(KC_GT)
+#define GUI_RSBR RGUI_T(KC_RBRC)
+
 // short names
 
 #define KC_KANA KC_INTERNATIONAL_2
@@ -65,11 +77,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // mouse
     [1] = LAYOUT_split_3x6_3(
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                      KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                             KC_TRNS, XXXXXXX, XXXXXXX,    KC_BTN1, KC_BTN3, KC_BTN2
                                         //`--------------------------'  `--------------------------'
@@ -78,11 +90,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // navigation
     [2] = LAYOUT_split_3x6_3(
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                             XXXXXXX, KC_TRNS, XXXXXXX,     KC_ENT, KC_BSPC,  KC_DEL
                                         //`--------------------------'  `--------------------------'
@@ -119,9 +131,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         XXXXXXX,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_MINS,                       KC_EQL, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI, XXXXXXX,
+        XXXXXXX,GUI_LSBR,ALT_LABR,CTL_LCBR,SFT_LPAR, KC_MINS,                       KC_EQL,SFT_RPAR,CTL_RCBR,ALT_RABR,GUI_RSBR, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        XXXXXXX,  KC_GRV, XXXXXXX,   KC_LT, KC_LBRC, KC_LCBR,                      KC_RCBR, KC_RBRC,   KC_GT, KC_QUOT, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_GRV, XXXXXXX,                      XXXXXXX, KC_QUOT, KC_BSLS, XXXXXXX, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                             XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, KC_TRNS, XXXXXXX
                                         //`--------------------------'  `--------------------------'
@@ -158,6 +170,36 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 #define L_NUM 16
 #define L_SYM 32
 #define L_FUNC 64
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LALT_T(KC_LT):
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_LT);
+                return false;
+            }
+            break;
+        case RALT_T(KC_GT):
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_GT);
+                return false;
+            }
+            break;
+        case LCTL_T(KC_LCBR):
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_LCBR);
+                return false;
+            }
+            break;
+        case RCTL_T(KC_RCBR):
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_RCBR);
+                return false;
+            }
+            break;
+    }
+    return true;
+}
 
 void oled_render_layer_state(void) {
     oled_write_P(PSTR("Layer: "), false);
